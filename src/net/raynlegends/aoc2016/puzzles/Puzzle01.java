@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 public class Puzzle01 implements Puzzle {
 
 	@Override
-	public int calculatePart1(String input) {
+	public String calculatePart1(String input) {
 		int distance = 0;
 		
 		int[] directionMovements = new int[4];
@@ -30,11 +30,11 @@ public class Puzzle01 implements Puzzle {
 		int y = directionMovements[1] - directionMovements[3];
 		distance = Math.abs(x) + Math.abs(y);
 		
-		return distance;
+		return distance + "";
 	}
 	
 	@Override
-	public int calculatePart2(String input) {
+	public String calculatePart2(String input) {
 		HashMap<String, Integer> visited = new HashMap<>();
 		int[] directionMovements = new int[4];
 		int currentDirection = 0;
@@ -59,7 +59,7 @@ public class Puzzle01 implements Puzzle {
 				String id = x + ";" + y;
 				for (Entry<String, Integer> other : visited.entrySet()) {
 					if (other.getKey().equals(id)) {
-						return other.getValue();
+						return other.getValue() + "";
 					}
 				}
 				int distance = Math.abs(x) + Math.abs(y);
@@ -68,7 +68,7 @@ public class Puzzle01 implements Puzzle {
 			}
 		}
 
-		return -1;
+		return -1 + "";
 	}
 
 }

@@ -1,15 +1,15 @@
 package net.raynlegends.aoc2016.managers;
 
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import net.raynlegends.aoc2016.puzzles.Puzzle;
 
 public class PuzzleManager {
 
-	private static final int implemented = 1;
-	private Map<String, Puzzle> puzzles = new HashMap<>();
+	private static final int implemented = 3;
+	private Map<String, Puzzle> puzzles = new LinkedHashMap<>();
 
 	public PuzzleManager() {
 		for (int i = 0; i < implemented; i++) {
