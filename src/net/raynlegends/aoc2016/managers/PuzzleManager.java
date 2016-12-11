@@ -8,18 +8,20 @@ import net.raynlegends.aoc2016.puzzles.Puzzle;
 
 public class PuzzleManager {
 
-	private static final int implemented = 3;
 	private Map<String, Puzzle> puzzles = new LinkedHashMap<>();
 
 	public PuzzleManager() {
-		for (int i = 0; i < implemented; i++) {
-			String id = String.format("%02d", i + 1);
+		int i = 1;
+		while (true) {
+			String id = String.format("%02d", i++);
 
 			try {
 				Class<?> puzzleClass = Class.forName("net.raynlegends.aoc2016.puzzles.Puzzle" + id);
 				Puzzle puzzle = (Puzzle) puzzleClass.newInstance();
 				puzzles.put("Puzzle " + id, puzzle);
-			} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) {
+				break;
+			} catch (InstantiationException | IllegalAccessException e) {
 				e.printStackTrace();
 			}
 		}
